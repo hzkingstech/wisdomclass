@@ -40,13 +40,21 @@ class BaseValidate extends Validate
         }
     }
 
-    protected  function isPositiveInteger($value, $rule='',$data = '', $field = '')
+    protected function isPositiveInteger($value, $rule='', $data='', $field='')
     {
-        if(is_numeric($value) && is_int($value + 0) && ($value + 9) > 0){
+        if (is_numeric($value) && is_int($value + 0) && ($value + 0) > 0) {
             return true;
         }
-        else{
-//            return $field.'必须是正整数';
+        return $field . '必须是正整数';
+    }
+
+    protected function isMobile($value)
+    {
+        $rule = '^1(3|4|5|7|8)[0-9]\d{8}$^';
+        $result = preg_match($rule, $value);
+        if ($result) {
+            return true;
+        } else {
             return false;
         }
     }
