@@ -55,6 +55,7 @@ class Token
         return $uid;
     }
 
+    //用户和CMS管理员都可以访问的权限
     public static function needPrimaryScope()
     {
         $scope = self::getCurrentTokenVar('scope');
@@ -71,7 +72,7 @@ class Token
 
     //只有用户才能访问的接口权限
     public static function needExclusiveScope(){
-        $scope = TokenService::getCurrentTokenVar('scope');
+        $scope = self::getCurrentTokenVar('scope');
         if($scope){
             if($scope == ScopeEnum::User){
                 return true;
@@ -81,5 +82,19 @@ class Token
         }else{
             throw new TokenException();
         }
+    }
+
+    public static function isValidOperate($checkedUID)
+    {
+        if(!$checkedUID)
+        {
+            throw new Exception('检查UID时必须传入一个被检查的UID');
+        }
+        $currentOperateUID = self::getCurrentUid();
+        if($currentOperateUID == $checkedUID)
+        {
+            return true;
+        }
+        return false;
     }
 }

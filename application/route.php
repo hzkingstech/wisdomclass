@@ -13,8 +13,6 @@
 
 use think\Route;
 
-Route::rule('hello','sample/Test/hello');
-
 Route::get('api/:version/banner/:id','api/:version.Banner/getBanner');
 
 Route::get('api/:version/theme','api/:version.Theme/getSimpleList');
@@ -40,3 +38,7 @@ Route::post('api/:version/token/user','api/:version.Token/getToken');
 Route::post('api/:version/address','api/:version.Address/createOrUpdateAddress');
 
 Route::post('api/:version/order','api/:version.Order/placeOrder');
+
+Route::get('api/:version/stuscores','api/:version.Stu/getScores');
+
+Route::post('api/:version/pay/pre_order', 'api/:version.Pay/getPreOrder');

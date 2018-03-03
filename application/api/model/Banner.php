@@ -8,6 +8,10 @@
 
 namespace app\api\model;
 
+use think\Db;
+use think\Exception;
+use think\Model;
+
 
 class Banner extends BaseModel
 {

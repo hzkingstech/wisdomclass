@@ -15,7 +15,6 @@ use think\Exception;
 
 class Banner
 {
-
     /*
      * 获取指定id的banner信息
      * @url /banner/:id
@@ -27,17 +26,11 @@ class Banner
     {
         (new IDMustBePostiveInt())->goCheck();
 
-//        $banner = BannerModel::get($id);
-//        $banner = BannerModel::with(['items','items.img'])->find($id);
-//        $banner->hidden('update_time');       //隐藏update_time、delete_time字段
-
-        $banner = BannerModel::getBannerByID($id);        //通过getBannerById获取对象
-//        $banner->hidden(['update_time']);             //直接隐藏模型中的字段
+        $banner = BannerModel::getBannerByID($id);        //通过getBannerById获取对象 //$banner->hidden(['update_time']);//直接隐藏模型中的字段
 
         if(!$banner) {
             throw new BannerMissException();
         }
-        $c = config('setting.img_prefix');
-        return json($banner);
+        return $banner;
     }
 }
