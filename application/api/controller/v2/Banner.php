@@ -21,6 +21,6 @@ class Banner
     public function getBanner($id)
     {
 
-        return "This is v2 version.";
+        return 'This is v2 version.';
     }
 }

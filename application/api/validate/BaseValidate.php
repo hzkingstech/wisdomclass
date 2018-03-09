@@ -27,10 +27,7 @@ class BaseValidate extends Validate
         if(!$result){
             $e = new ParameterException([
                 'msg' => $this->error,
-//                'code' => 400,
-//                'errorCode' => 10002
             ]);
-//            $e->msg = $this->error;
             throw $e;
 //            $error = $this->error;
 //            throw new Exception($error);
@@ -44,8 +41,11 @@ class BaseValidate extends Validate
     {
         if (is_numeric($value) && is_int($value + 0) && ($value + 0) > 0) {
             return true;
+        }else{
+            return false;
         }
-        return $field . '必须是正整数';
+
+//        return $field . '必须是正整数';
     }
 
     protected function isMobile($value)

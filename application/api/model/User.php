@@ -9,7 +9,7 @@
 namespace app\api\model;
 
 
-class User  extends BaseModel
+class User extends BaseModel
 {
 
     public function address(){

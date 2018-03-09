@@ -19,11 +19,11 @@ class Product
     public function getRecent($count=15){
         (new Count())->goCheck();
         $products = ProductModel::getMostRecent($count);
-        if(!$products){
+        if(!$products->isEmpty()){
             throw new ProductException();
         }
-        $collection = collection($products);
-        $products = $collection->hidden(['summary']);
+        //$collection = collection($products);    //在database.php中设置数据返回类型以后，就不需要将数组转换成数据集了
+        $products = $products->hidden(['summary']);
         return $products;
 
     }
@@ -31,11 +31,11 @@ class Product
     public function getAllInCategory($id){
         (new IDMustBePostiveInt())->goCheck();
         $products = ProductModel::getProductsByCategoryID($id);
-        if(!$products){
+        if($products->isEmpty()){
             throw new ProductException();
         }
-        $collection = collection($products);
-        $products = $collection->hidden(['summary']);
+//        $collection = collection($products);
+        $products = $products->hidden(['summary']);
         return $products;
     }
 

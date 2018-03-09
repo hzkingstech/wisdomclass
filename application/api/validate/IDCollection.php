@@ -21,7 +21,7 @@ class IDCollection extends BaseValidate
 
     protected function checkIDs($value)
     {
-        $values = explode(',',$value);
+        $values = explode(',', $value);
         if(empty($values)){
             return false;
         }

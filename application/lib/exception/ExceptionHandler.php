@@ -10,6 +10,7 @@ namespace app\lib\exception;
 
 
 use think\exception\Handle;
+use think\Exception;
 use think\Log;
 use think\Request;
 
