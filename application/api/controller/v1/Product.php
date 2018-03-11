@@ -19,7 +19,7 @@ class Product
     public function getRecent($count=15){
         (new Count())->goCheck();
         $products = ProductModel::getMostRecent($count);
-        if(!$products->isEmpty()){
+        if($products->isEmpty()){
             throw new ProductException();
         }
         //$collection = collection($products);    //在database.php中设置数据返回类型以后，就不需要将数组转换成数据集了
